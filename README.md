@@ -30,3 +30,10 @@ Eigenständiges Unterrichtsprojekt zur Schlussabstimmung in Ferdinand von Schira
 ## Start
 
 Die App ist rein statisch und kann direkt über `index.html` geöffnet werden.
+
+## GitHub Pages
+
+Dieses Repo enthält einen GitHub-Actions-Workflow für GitHub Pages.
+
+- Bei jedem Push auf `main` wird die statische Seite veröffentlicht.
+- Falls GitHub Pages im Repo noch nicht aktiviert ist, muss unter `Settings > Pages` einmal `GitHub Actions` als Quelle gewählt werden.
