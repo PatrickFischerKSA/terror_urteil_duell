@@ -206,6 +206,7 @@ h1 {
 .verdict-grid,
 .duel-grid,
 .info-grid,
+.prep-grid,
 .duel-form-grid,
 .judge-rubric,
 .score-grid,
@@ -219,7 +220,13 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.prep-grid {
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  align-items: stretch;
+}
+
 .info-card,
+.prep-card,
 .progress-item,
 .trace-entry,
 .question-explainer,
@@ -236,6 +243,7 @@ h1 {
 }
 
 .info-card p,
+.prep-card p,
 .trace-entry p,
 .duel-card p,
 .judge-box p,
@@ -244,6 +252,60 @@ h1 {
 .support-card p {
   color: var(--muted);
   line-height: 1.58;
+}
+
+.prep-card {
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.prep-card.video-card {
+  background: linear-gradient(145deg, rgba(66, 97, 143, 0.12), rgba(255, 255, 255, 0.86));
+}
+
+.prep-card h3 {
+  font-size: 1.2rem;
+}
+
+.prep-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.prep-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.prep-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(31, 36, 48, 0.08);
+  border: 1px solid var(--line);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.video-frame {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.video-frame video {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
 }
 
 .verdict-grid,
@@ -560,6 +622,7 @@ h1 {
   }
 
   .info-grid,
+  .prep-grid,
   .judge-rubric,
   .result-grid,
   .duel-round-grid {

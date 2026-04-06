@@ -6,6 +6,7 @@ Eigenständiges Unterrichtsprojekt zur Schlussabstimmung in Ferdinand von Schira
 
 ### 1. Urteilsweg
 - 10 Einzelfragen führen schrittweise durch Tatsachen, Normen, Alternativen, Gewissen und Schlussformen.
+- Das Trolleyproblem ist ausdrücklich eingebaut, vor allem im Schritt zur Formel `wenige töten, viele retten`.
 - Die Frage nach Schuld oder Unschuld wird absichtlich erst ganz am Schluss sichtbar.
 - Das Endergebnis erklärt Schritt für Schritt, warum der Denkweg eher zu Verurteilung oder Freispruch geführt hat.
 
@@ -26,14 +27,8 @@ Eigenständiges Unterrichtsprojekt zur Schlussabstimmung in Ferdinand von Schira
 
 - `Argumentationslehre.docx`: These, Prämisse, Konklusion, Deduktion, Abduktion, Analogie, Fehlschlüsse
 - `Schirach_Terror_9783641203290.pdf`: Koch, Nelson, Biegler, Vorsitzender sowie Freispruch- und Verurteilungsbegründung
+- eingebautes Video: `Straßenbahn - das philosophische Gedankenexperiment`
 
 ## Start
 
 Die App ist rein statisch und kann direkt über `index.html` geöffnet werden.
-
-## GitHub Pages
-
-Dieses Repo enthält einen GitHub-Actions-Workflow für GitHub Pages.
-
-- Bei jedem Push auf `main` wird die statische Seite veröffentlicht.
-- Falls GitHub Pages im Repo noch nicht aktiviert ist, muss unter `Settings > Pages` einmal `GitHub Actions` als Quelle gewählt werden.

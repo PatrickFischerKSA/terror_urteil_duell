@@ -13,6 +13,58 @@ const MODE_CARDS = [
   }
 ];
 
+const TROLLEY_VIDEO_LINK = 'https://www.dropbox.com/scl/fi/0q2zm7rgr03b7l9bz133z/STRASSENBAHN-das-philosophische-Gedankenexperiment-filosofix.mp4?rlkey=oh1qz7n1nhgq0kcuu8jpgipt2&st=1pr1uosz&dl=0';
+const TROLLEY_VIDEO_EMBED = 'https://www.dropbox.com/scl/fi/0q2zm7rgr03b7l9bz133z/STRASSENBAHN-das-philosophische-Gedankenexperiment-filosofix.mp4?rlkey=oh1qz7n1nhgq0kcuu8jpgipt2&st=1pr1uosz&raw=1';
+
+const PREP_MODULES = [
+  {
+    id: 'video',
+    title: '1. Trolleyproblem ansehen',
+    kind: 'video',
+    text: 'Das Video öffnet den Kernkonflikt des ganzen Projekts: Darf man aktiv eingreifen, wenn dadurch wenige sterben, aber viele gerettet werden?',
+    bullets: [
+      'Leitfrage 1: Ist Nicht-Handeln wirklich neutral oder auch schon eine Entscheidung?',
+      'Leitfrage 2: Ändert sich moralisch etwas, wenn ich aktiv umstelle oder aktiv abschieße?',
+      'Leitfrage 3: Wo wird aus Rettungslogik eine Grenzverletzung?'
+    ],
+    tags: ['Video', 'Trolleyproblem', 'Einstieg', 'Leben gegen Leben']
+  },
+  {
+    id: 'util',
+    title: '2. Utilitarismus kurz erklärt',
+    text: 'Utilitaristisches Denken fragt zuerst nach den Folgen: Welche Handlung verringert insgesamt Leid oder rettet mehr Menschen? Im Fall Koch klingt diese Linie oft so: 164 sterben, aber 70 000 werden gerettet.',
+    bullets: [
+      'Typische Frage: Welche Option hat die besseren Folgen für möglichst viele?',
+      'Typischer Satz: Das kleinere Übel muss gewählt werden.',
+      'Risiko: Menschen werden zu schnell zu Zahlen oder bloßen Rechenposten.'
+    ],
+    tags: ['Folgen', 'kleineres Übel', 'Rettungslogik', '70 000 vs. 164']
+  },
+  {
+    id: 'deon',
+    title: '3. Deontologie kurz erklärt',
+    text: 'Deontologisches Denken fragt zuerst nach Grenze, Würde und Pflicht. Im Fall Koch klingt diese Linie oft so: Unschuldige dürfen nicht absichtlich geopfert und als Mittel benutzt werden, auch dann nicht, wenn damit viele andere gerettet werden sollen.',
+    bullets: [
+      'Typische Frage: Gibt es eine Grenze, die auch im Extremfall nicht fällt?',
+      'Typischer Satz: Menschen dürfen nicht bloßes Mittel sein.',
+      'Risiko: Die Position wirkt hart, weil sie extreme Folgen des Unterlassens aushalten muss.'
+    ],
+    tags: ['Pflicht', 'Würde', 'Grenze', 'bloßes Mittel']
+  },
+  {
+    id: 'inference',
+    title: '4. Arten des Schlussfolgerns',
+    text: 'Im Spiel zählt nicht nur, was ihr denkt, sondern wie ihr vom Argument zur Schlussfolgerung kommt. Die App achtet deshalb ausdrücklich auf Schlussformen.',
+    bullets: [
+      'Deduktion: Wenn die Menschenwürde absolut gilt, dann folgt daraus ein Verbot.',
+      'Abduktion: Aus Kurs, Funkmeldung und Zeitdruck wird auf den wahrscheinlichsten Ausgang geschlossen.',
+      'Analogie: Fälle wie Schiffbruch, Organtransplantation oder Weichensteller werden herangezogen.',
+      'Warnung: Achtet auf Fehlschlüsse wie falsches Dilemma, slippery slope oder ad hominem.'
+    ],
+    tags: ['Deduktion', 'Abduktion', 'Analogie', 'Fehlschlüsse']
+  }
+];
+
 const VERDICT_QUESTIONS = [
   {
     id: 'fact_anchor',
@@ -932,6 +984,47 @@ function renderModeSwitch() {
   });
 }
 
+function renderPrepUnit() {
+  prepUnit.innerHTML = PREP_MODULES.map((module) => {
+    if (module.kind === 'video') {
+      return `
+        <article class="prep-card video-card">
+          <span class="mini-chip">Vorentlastung vor dem Urteil</span>
+          <h3>${module.title}</h3>
+          <p>${module.text}</p>
+          <div class="video-frame">
+            <video controls preload="metadata" playsinline>
+              <source src="${TROLLEY_VIDEO_EMBED}" type="video/mp4" />
+            </video>
+          </div>
+          <p class="small-note">Wenn das Video im Browser nicht sauber lädt, öffnet es direkt hier: <a href="${TROLLEY_VIDEO_LINK}" target="_blank" rel="noreferrer noopener">Straßenbahn - das philosophische Gedankenexperiment</a>.</p>
+          <ul>
+            ${module.bullets.map((bullet) => `<li>${bullet}</li>`).join('')}
+          </ul>
+          <div class="prep-tags">
+            ${module.tags.map((tag) => `<span class="prep-tag">${tag}</span>`).join('')}
+            <span class="prep-tag">Im Spiel: Schritt 6 und Duell-Runde 4</span>
+          </div>
+        </article>
+      `;
+    }
+
+    return `
+      <article class="prep-card">
+        <span class="mini-chip">Denkwerkzeug</span>
+        <h3>${module.title}</h3>
+        <p>${module.text}</p>
+        <ul>
+          ${module.bullets.map((bullet) => `<li>${bullet}</li>`).join('')}
+        </ul>
+        <div class="prep-tags">
+          ${module.tags.map((tag) => `<span class="prep-tag">${tag}</span>`).join('')}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
 function renderVerdictProgress() {
   verdictProgress.innerHTML = VERDICT_QUESTIONS.map((question, index) => {
     const answered = Boolean(state.verdict.answers[question.id]);
@@ -1320,6 +1413,7 @@ function renderHistory() {
 
 function render() {
   renderModeSwitch();
+  renderPrepUnit();
   verdictMode.classList.toggle('hidden', state.mode !== 'verdict');
   duelMode.classList.toggle('hidden', state.mode !== 'duel');
   renderVerdictProgress();
@@ -1333,6 +1427,7 @@ function render() {
 const state = loadState() || createInitialState();
 
 const modeSwitch = document.querySelector('#modeSwitch');
+const prepUnit = document.querySelector('#prepUnit');
 const verdictMode = document.querySelector('#verdictMode');
 const duelMode = document.querySelector('#duelMode');
 const verdictProgress = document.querySelector('#verdictProgress');
