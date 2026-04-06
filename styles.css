@@ -1,0 +1,593 @@
+:root {
+  --bg: #efe5d2;
+  --paper: rgba(255, 250, 243, 0.9);
+  --paper-strong: #fffaf2;
+  --ink: #1f2430;
+  --muted: #667089;
+  --line: rgba(54, 67, 86, 0.16);
+  --line-strong: rgba(54, 67, 86, 0.28);
+  --accent: #8b5e34;
+  --accent-soft: rgba(139, 94, 52, 0.12);
+  --green: #3c6f59;
+  --green-soft: rgba(60, 111, 89, 0.12);
+  --red: #8c4343;
+  --red-soft: rgba(140, 67, 67, 0.12);
+  --blue: #42618f;
+  --blue-soft: rgba(66, 97, 143, 0.12);
+  --shadow: 0 18px 40px rgba(44, 39, 30, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.62), transparent 32%),
+    linear-gradient(180deg, #efe7d8 0%, #e6dcc6 100%);
+}
+
+body {
+  padding: 24px;
+}
+
+.page-shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  gap: 22px;
+}
+
+.hero,
+.panel {
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 22px;
+  padding: 28px;
+  align-items: stretch;
+}
+
+.hero-copy,
+.hero-note {
+  display: grid;
+  gap: 12px;
+}
+
+.hero-note {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(66, 97, 143, 0.12), rgba(255, 255, 255, 0.42));
+}
+
+.eyebrow,
+.note-kicker,
+.mini-chip {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 4.3rem);
+  line-height: 0.94;
+}
+
+.lead {
+  font-size: 1.08rem;
+  line-height: 1.68;
+  color: var(--muted);
+}
+
+.panel {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.panel-head.compact {
+  align-items: center;
+}
+
+.panel-head p {
+  max-width: 780px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.mode-switch {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mode-btn,
+.primary-btn,
+.ghost-btn,
+.option-btn,
+.choice-chip {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.mode-btn,
+.primary-btn,
+.ghost-btn {
+  min-height: 56px;
+  padding: 14px 18px;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.mode-btn {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.mode-btn strong,
+.mode-btn span {
+  display: block;
+}
+
+.mode-btn span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.mode-btn.active {
+  border-color: rgba(66, 97, 143, 0.38);
+  background: rgba(66, 97, 143, 0.12);
+  box-shadow: 0 16px 30px rgba(66, 97, 143, 0.12);
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #6a4c2f, #9e7447);
+  color: #fff9f0;
+  box-shadow: 0 14px 26px rgba(106, 76, 47, 0.2);
+}
+
+.ghost-btn {
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink);
+}
+
+.primary-btn:disabled,
+.ghost-btn:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.mode-btn:hover,
+.primary-btn:hover,
+.ghost-btn:hover,
+.option-btn:hover,
+.choice-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+
+.mode-shell,
+.verdict-grid,
+.duel-grid,
+.info-grid,
+.duel-form-grid,
+.judge-rubric,
+.score-grid,
+.result-grid,
+.result-explanation-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.info-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info-card,
+.progress-item,
+.trace-entry,
+.question-explainer,
+.duel-card,
+.judge-box,
+.history-item,
+.score-card,
+.result-card,
+.support-card {
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 18px;
+}
+
+.info-card p,
+.trace-entry p,
+.duel-card p,
+.judge-box p,
+.history-item p,
+.result-card p,
+.support-card p {
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.verdict-grid,
+.duel-grid {
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.45fr) minmax(260px, 1fr);
+}
+
+.progress-list,
+.trace-panel-body,
+.judge-result,
+.duel-history {
+  display: grid;
+  gap: 12px;
+}
+
+.progress-item {
+  display: grid;
+  gap: 6px;
+}
+
+.progress-item.pending {
+  opacity: 0.68;
+}
+
+.progress-item.active {
+  border-color: rgba(66, 97, 143, 0.34);
+  background: var(--blue-soft);
+}
+
+.progress-item.done {
+  border-color: rgba(60, 111, 89, 0.32);
+  background: var(--green-soft);
+}
+
+.progress-step {
+  font-weight: 900;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+.question-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.question-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+
+.question-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(31, 36, 48, 0.08);
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+
+.question-text {
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.question-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 16px;
+}
+
+.option-btn strong,
+.option-btn span,
+.option-btn em {
+  display: block;
+}
+
+.option-btn span,
+.option-btn em {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.option-btn em {
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.option-btn.selected {
+  border-color: rgba(139, 94, 52, 0.34);
+  background: var(--accent-soft);
+  box-shadow: 0 16px 28px rgba(139, 94, 52, 0.1);
+}
+
+.choice-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(66, 97, 143, 0.08);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.meta-row,
+.button-row,
+.pill-row,
+.score-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.question-explainer {
+  display: grid;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(66, 97, 143, 0.1), rgba(255, 255, 255, 0.88));
+}
+
+.question-explainer strong {
+  font-size: 0.95rem;
+}
+
+.trace-entry {
+  display: grid;
+  gap: 8px;
+}
+
+.trace-entry::before {
+  content: attr(data-step);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.field-label {
+  font-weight: 800;
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 14px 16px;
+  color: var(--ink);
+  font: inherit;
+}
+
+.field-textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.duel-board {
+  display: grid;
+  gap: 18px;
+}
+
+.score-grid {
+  margin-top: 4px;
+}
+
+.score-card {
+  min-width: 140px;
+  display: grid;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.score-card strong {
+  font-size: 1.7rem;
+}
+
+.duel-round-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.duel-card {
+  display: grid;
+  gap: 10px;
+}
+
+.duel-card.highlight {
+  border-color: rgba(139, 94, 52, 0.34);
+  background: var(--accent-soft);
+}
+
+.judge-rubric {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.judge-box strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.judge-result-card {
+  border-radius: 22px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.78);
+  display: grid;
+  gap: 12px;
+}
+
+.judge-result-card.winner-a {
+  border-color: rgba(60, 111, 89, 0.34);
+  background: rgba(60, 111, 89, 0.12);
+}
+
+.judge-result-card.winner-b {
+  border-color: rgba(66, 97, 143, 0.34);
+  background: rgba(66, 97, 143, 0.12);
+}
+
+.history-item {
+  display: grid;
+  gap: 10px;
+}
+
+.history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.history-winner {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(31, 36, 48, 0.08);
+  font-weight: 800;
+}
+
+.result-panel {
+  gap: 18px;
+}
+
+.result-headline {
+  display: grid;
+  gap: 10px;
+}
+
+.result-headline strong {
+  display: inline-flex;
+  width: fit-content;
+  padding: 9px 13px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  background: rgba(31, 36, 48, 0.08);
+}
+
+.result-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.result-card {
+  display: grid;
+  gap: 8px;
+}
+
+.result-card.verdict-convict {
+  border-color: rgba(140, 67, 67, 0.3);
+  background: var(--red-soft);
+}
+
+.result-card.verdict-acquit {
+  border-color: rgba(60, 111, 89, 0.3);
+  background: var(--green-soft);
+}
+
+.result-explanation-grid {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.support-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.small-note {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+@media (max-width: 1180px) {
+  .hero,
+  .verdict-grid,
+  .duel-grid,
+  .result-explanation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid,
+  .judge-rubric,
+  .result-grid,
+  .duel-round-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 14px;
+  }
+
+  .panel,
+  .hero {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 2.45rem;
+  }
+
+  .panel-head {
+    display: grid;
+  }
+
+  .mode-switch,
+  .button-row {
+    display: grid;
+  }
+}
